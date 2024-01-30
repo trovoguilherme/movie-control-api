@@ -1,0 +1,12 @@
+
+server:
+  port: 8080
+
+
+tmdb:
+  url: https://api.themoviedb.org/3
+  endpoint:
+    search:
+      movie: /search/movie
+    movie:
+      get-by-id: /movie/{id}
