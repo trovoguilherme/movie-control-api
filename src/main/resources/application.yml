@@ -5,8 +5,13 @@ server:
 
 tmdb:
   url: https://api.themoviedb.org/3
+  language: pt-BR
+  api-key: ce6047be362c9ee238245147b61f2d66
+  token: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZTYwNDdiZTM2MmM5ZWUyMzgyNDUxNDdiNjFmMmQ2NiIsInN1YiI6IjY1YjZlNTRlMGNkMzJhMDE3Y2U1YmQ0NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.my-7zbADyvlZ_KKfYTIAEtX_bTvWAtnqMxVlwrbmOqs
   endpoint:
     search:
       movie: /search/movie
     movie:
       get-by-id: /movie/{id}
+      genre:
+        list: /genre/movie/list
