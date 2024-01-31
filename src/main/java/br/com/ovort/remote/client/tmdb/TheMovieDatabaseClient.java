@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Optional;
 
+import static br.com.ovort.remote.RemoteConstants.CB_RETRY_THE_MOVIE_DATABASE_FIND_ALL_GENRES;
+import static br.com.ovort.remote.RemoteConstants.CB_RETRY_THE_MOVIE_DATABASE_FIND_ALL_LANGUAGES;
 import static br.com.ovort.remote.RemoteConstants.CB_RETRY_THE_MOVIE_DATABASE_FIND_BY_ID;
-import static br.com.ovort.remote.RemoteConstants.CB_RETRY_THE_MOVIE_DATABASE_LIST_GENRES;
 import static br.com.ovort.remote.RemoteConstants.CB_RETRY_THE_MOVIE_DATABASE_SEARCH_MOVIE_BY_QUERY;
 
 @FeignClient(url = "${tmdb.url}", name = "tmdb")
@@ -37,13 +38,13 @@ public interface TheMovieDatabaseClient {
                                           @RequestHeader(name = "Authorization") String authorization);
 
     @GetMapping("${tmdb.endpoint.movie.genre.list}")
-    @Retry(name = CB_RETRY_THE_MOVIE_DATABASE_LIST_GENRES)
-    @CircuitBreaker(name = CB_RETRY_THE_MOVIE_DATABASE_LIST_GENRES)
+    @Retry(name = CB_RETRY_THE_MOVIE_DATABASE_FIND_ALL_GENRES)
+    @CircuitBreaker(name = CB_RETRY_THE_MOVIE_DATABASE_FIND_ALL_GENRES)
     Optional<GenreResponse> findMovieGenres(@RequestParam(name = "language") String language,
                                             @RequestHeader(name = "Authorization") String authorization);
 
     @GetMapping("${tmdb.endpoint.languages}")
-    @Retry(name = CB_RETRY_THE_MOVIE_DATABASE_LIST_GENRES)
-    @CircuitBreaker(name = CB_RETRY_THE_MOVIE_DATABASE_LIST_GENRES)
+    @Retry(name = CB_RETRY_THE_MOVIE_DATABASE_FIND_ALL_LANGUAGES)
+    @CircuitBreaker(name = CB_RETRY_THE_MOVIE_DATABASE_FIND_ALL_LANGUAGES)
     List<SpokenLanguageResponse> findAllLanguages(@RequestHeader(name = "Authorization") String authorization);
 }
