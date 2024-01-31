@@ -1,4 +1,4 @@
-package br.com.ovort.client.tmdb.movie;
+package br.com.ovort.remote.client.tmdb.response.movie;
 
 import java.util.List;
 

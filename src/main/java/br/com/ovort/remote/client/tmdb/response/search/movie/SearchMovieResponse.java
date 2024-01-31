@@ -1,8 +1,8 @@
-package br.com.ovort.client.tmdb.search.movie;
+package br.com.ovort.remote.client.tmdb.response.search.movie;
 
 import java.util.List;
 
-public record SearchMovie(
+public record SearchMovieResponse(
     Boolean adult,
     String backdrop_path,
     List<Integer> genre_ids,

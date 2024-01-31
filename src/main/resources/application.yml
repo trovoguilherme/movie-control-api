@@ -15,3 +15,4 @@ tmdb:
       get-by-id: /movie/{id}
       genre:
         list: /genre/movie/list
+    languages: /configuration/languages

@@ -1,6 +1,6 @@
-package br.com.ovort.client.tmdb.movie;
+package br.com.ovort.remote.client.tmdb.response.movie;
 
-public record ProdutionCompanie(
+public record ProdutionCompanieResponse(
         Integer id,
         String logo_path,
         String name,

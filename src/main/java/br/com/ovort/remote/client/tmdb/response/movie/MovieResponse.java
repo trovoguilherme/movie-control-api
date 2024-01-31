@@ -1,13 +1,13 @@
-package br.com.ovort.client.tmdb.movie;
+package br.com.ovort.remote.client.tmdb.response.movie;
 
 import java.util.List;
 
-public record Movie(
+public record MovieResponse(
         Boolean adult,
         String backdrop_path,
-        BelongsCollection belongs_to_collection,
+        BelongsCollectionResponse belongs_to_collection,
         Integer budget,
-        List<MovieGenre> genres,
+        List<MovieGenreResponse> genres,
         String homepage,
         Integer id,
         String imdb_id,
@@ -16,12 +16,12 @@ public record Movie(
         String overview,
         Double popularity,
         String poster_path,
-        List<ProdutionCompanie> production_companies,
-        List<ProdutionCountrie> production_countries,
+        List<ProdutionCompanieResponse> production_companies,
+        List<ProdutionCountrieResponse> production_countries,
         String release_date,
         Integer revenue,
         Integer runtime,
-        List<SpokenLinguage> spoken_languages,
+        List<SpokenLanguageResponse> spoken_languages,
         String status,
         String tagline,
         String title,
