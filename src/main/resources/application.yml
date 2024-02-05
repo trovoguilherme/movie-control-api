@@ -31,6 +31,11 @@ tmdb:
         list: /genre/movie/list
     languages: /configuration/languages
 
+viacep:
+  url : https://viacep.com.br
+  endpoint:
+    get-by-cep: /ws/{cep}/json
+
 api:
   security:
     token:
