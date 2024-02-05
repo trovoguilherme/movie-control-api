@@ -1,9 +1,9 @@
 package br.com.ovort.controller;
 
 import br.com.ovort.configs.security.TokenService;
+import br.com.ovort.controller.request.AuthenticationRequest;
+import br.com.ovort.controller.request.UserRequest;
 import br.com.ovort.controller.response.LoginResponse;
-import br.com.ovort.entity.AuthenticationRequest;
-import br.com.ovort.entity.UserRequest;
 import br.com.ovort.entity.user.User;
 import br.com.ovort.repository.UserRepository;
 import jakarta.validation.Valid;

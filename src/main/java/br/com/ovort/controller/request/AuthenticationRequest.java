@@ -1,4 +1,4 @@
-package br.com.ovort.entity;
+package br.com.ovort.controller.request;
 
 public record AuthenticationRequest(
         String login,
