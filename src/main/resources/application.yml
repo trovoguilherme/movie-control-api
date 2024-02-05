@@ -30,3 +30,9 @@ tmdb:
       genre:
         list: /genre/movie/list
     languages: /configuration/languages
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:my-secret-key}
+    issuer: movie-control-api
