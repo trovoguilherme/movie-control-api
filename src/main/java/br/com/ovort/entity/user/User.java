@@ -1,9 +1,15 @@
 package br.com.ovort.entity.user;
 
+import br.com.ovort.entity.filme.Filme;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,14 +29,22 @@ import java.util.List;
 public class User implements UserDetails {
 
     @Id
+    @Column(name = "ID_USUARIO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "LOGIN")
     private String login;
 
+    @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "ROLE")
+    @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Filme> filmes;
 
     public User(String login, String password, UserRole role) {
         this.login = login;
