@@ -1,6 +1,6 @@
 package br.com.ovort.controller;
 
-import br.com.ovort.controller.filme.FilmeRequest;
+import br.com.ovort.dto.request.filme.FilmeRequest;
 import br.com.ovort.entity.filme.Filme;
 import br.com.ovort.exception.SearchMovieNotFoundException;
 import br.com.ovort.service.FilmeService;

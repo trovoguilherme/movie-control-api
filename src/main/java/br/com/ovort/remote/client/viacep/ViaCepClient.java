@@ -1,5 +1,6 @@
 package br.com.ovort.remote.client.viacep;
 
+import br.com.ovort.remote.client.viacep.response.ViaCepResponse;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.cloud.openfeign.FeignClient;

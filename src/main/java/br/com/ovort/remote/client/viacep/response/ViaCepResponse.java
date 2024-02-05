@@ -1,4 +1,4 @@
-package br.com.ovort.remote.client.viacep;
+package br.com.ovort.remote.client.viacep.response;
 
 public record ViaCepResponse(
         String cep,

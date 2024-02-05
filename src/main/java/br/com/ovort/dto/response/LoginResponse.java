@@ -1,4 +1,4 @@
-package br.com.ovort.controller.response;
+package br.com.ovort.dto.response;
 
 public record LoginResponse(String token) {
 }

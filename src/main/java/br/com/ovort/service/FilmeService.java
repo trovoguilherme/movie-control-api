@@ -1,7 +1,7 @@
 package br.com.ovort.service;
 
 import br.com.ovort.configs.security.TokenService;
-import br.com.ovort.controller.filme.FilmeRequest;
+import br.com.ovort.dto.request.filme.FilmeRequest;
 import br.com.ovort.entity.filme.Filme;
 import br.com.ovort.entity.user.User;
 import br.com.ovort.exception.SearchMovieNotFoundException;

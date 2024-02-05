@@ -1,4 +1,4 @@
-package br.com.ovort.controller.request;
+package br.com.ovort.dto.request.user;
 
 public record AuthenticationRequest(
         String login,

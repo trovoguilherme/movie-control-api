@@ -1,4 +1,4 @@
-package br.com.ovort.controller.filme;
+package br.com.ovort.dto.request.filme;
 
 public record FilmeRequest(
         String titulo,
