@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .components(new Components().addSecuritySchemes
                         ("Bearer Authentication", createAPIKeyScheme()))
                 .info(new Info().title("movie-control-api")
-                        .description("API para controle de filmes")
+                        .description("Movie Control API")
                         .version("1.0").contact(new Contact().name("Guilherme Trovo")
                                 .email( "zguilhermetrovo@gmail.com").url("https://www.instagram.com/guilhermetrovoo"))
                         .license(new License().name("License of API")
