@@ -1,5 +1,7 @@
 package br.com.ovort.controller;
 
+import br.com.ovort.configs.security.TokenService;
+import br.com.ovort.controller.response.LoginResponse;
 import br.com.ovort.entity.AuthenticationRequest;
 import br.com.ovort.entity.UserRequest;
 import br.com.ovort.entity.user.User;
@@ -22,13 +24,16 @@ public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
+    private final TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity<Void> login(@RequestBody @Valid AuthenticationRequest authenticationRequest) {
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid AuthenticationRequest authenticationRequest) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(authenticationRequest.login(), authenticationRequest.password());
         var auth = authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponse(token));
     }
 
     @PostMapping("/register")
