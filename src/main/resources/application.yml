@@ -4,17 +4,17 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/movie
-    username: gui
-    password: senha123
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
 
 
 tmdb:
