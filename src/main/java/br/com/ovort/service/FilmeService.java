@@ -5,8 +5,10 @@ import br.com.ovort.dto.request.filme.FilmeRequest;
 import br.com.ovort.entity.filme.Filme;
 import br.com.ovort.entity.user.User;
 import br.com.ovort.exception.SearchMovieNotFoundException;
+import br.com.ovort.remote.client.tmdb.response.search.movie.SearchMovieResponse;
 import br.com.ovort.repository.FilmeRepository;
 import br.com.ovort.repository.UserRepository;
+import br.com.ovort.util.MovieUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,8 @@ public class FilmeService {
 
     public Filme create(FilmeRequest filmeRequest) throws SearchMovieNotFoundException {
         var moviesfound = movieService.search(filmeRequest.titulo());
-        var movie = movieService.findById(moviesfound.results().get(0).id());
+
+        var movie = movieService.findById(MovieUtils.findMovieIdByMostSimilarTitle(filmeRequest.titulo(), moviesfound.results()));
 
         var user = userRepository.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
 

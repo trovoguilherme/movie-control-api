@@ -25,9 +25,9 @@ public class MovieService {
 
         var moviePaginationResponse = movieServiceClient.searchMovieByName(title).orElseThrow(() -> new SearchMovieNotFoundException("Não encontrei os filmes"));
 
-        String similar = getSimilarTitle(title, moviePaginationResponse.results().stream().map(SearchMovieResponse::title).toList());
+//        String similar = getSimilarTitle(title, moviePaginationResponse.results().stream().map(SearchMovieResponse::title).toList());
 
-        System.out.println("aquiiiiii: "+similar);
+//        System.out.println("aquiiiiii: "+similar);
 
         return moviePaginationResponse;
     }
