@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,7 +29,7 @@ public class FilmeService {
 
         var user = findActualUser();
 
-        return filmeRepository.save(new Filme(movie.title(), filmeRequest.nota(), filmeRequest.descricao(), user));
+        return filmeRepository.save(new Filme(movie.title(), movie.original_title(), movie.overview(), LocalDateTime.parse(movie.release_date() + "T00:00:00"), movie.runtime(), movie.budget(), filmeRequest.nota(), filmeRequest.comentario(), user));
     }
 
     public List<Filme> findAll() {
