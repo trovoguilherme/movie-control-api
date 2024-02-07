@@ -1,0 +1,7 @@
+
+ALTER TABLE filme
+ADD COLUMN titulo_original VARCHAR(255),
+ADD COLUMN sinopse VARCHAR(255),
+ADD COLUMN data_lancamento TIMESTAMP,
+ADD COLUMN tempo INT,
+ADD COLUMN budget INTEGER;

@@ -33,11 +33,26 @@ public class Filme {
     @Column(name = "TITULO")
     private String titulo;
 
+    @Column(name = "TITULO_ORIGINAL")
+    private String tituloOriginal;
+
+    @Column(name = "SINOPSE")
+    private String sinopse;
+
+    @Column(name = "DATA_LANCAMENTO")
+    private LocalDateTime dataLancamento;
+
+    @Column(name = "TEMPO")
+    private int tempo;
+
+    @Column(name = "BUDGET")
+    private Integer budget;
+
     @Column(name = "NOTA")
     private Double nota;
 
-    @Column(name = "DESCRICAO")
-    private String descricao;
+    @Column(name = "comentario")
+    private String comentario;
 
     @CreationTimestamp
     private LocalDateTime dataCriacao;
@@ -46,10 +61,15 @@ public class Filme {
     @JoinColumn(name = "ID_USUARIO", nullable = false)
     private User user;
 
-    public Filme(String titulo, Double nota, String descricao, User user) {
+    public Filme(String titulo, String tituloOriginal, String sinopse, LocalDateTime dataLancamento, int tempo, Integer budget, Double nota, String comentario, User user) {
         this.titulo = titulo;
+        this.tituloOriginal = tituloOriginal;
+        this.sinopse = sinopse;
+        this.dataLancamento = dataLancamento;
+        this.tempo = tempo;
+        this.budget = budget;
         this.nota = nota;
-        this.descricao = descricao;
+        this.comentario = comentario;
         this.user = user;
     }
 
