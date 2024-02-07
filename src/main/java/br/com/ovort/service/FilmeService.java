@@ -37,7 +37,7 @@ public class FilmeService {
     }
 
     private User findActualUser() {
-        return (User) userRepository.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
 }

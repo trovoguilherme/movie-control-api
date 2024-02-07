@@ -16,7 +16,6 @@ spring:
     hibernate:
       ddl-auto: none
 
-
 tmdb:
   url: https://api.themoviedb.org/3
   language: pt-BR
