@@ -24,8 +24,8 @@ public class FilmeController {
     private final FilmeService filmeService;
 
     @PostMapping
-    public ResponseEntity<Filme> create(@RequestBody @Valid FilmeRequest filmeRequest) throws SearchMovieNotFoundException {
-        return ResponseEntity.ok(filmeService.create(filmeRequest));
+    public ResponseEntity<FilmeResponse> create(@RequestBody @Valid FilmeRequest filmeRequest) throws SearchMovieNotFoundException {
+        return ResponseEntity.ok(FilmeResponse.from(filmeService.create(filmeRequest)));
     }
 
     @GetMapping

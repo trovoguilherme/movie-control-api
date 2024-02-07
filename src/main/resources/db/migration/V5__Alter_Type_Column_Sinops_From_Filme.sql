@@ -1,0 +1,3 @@
+
+ALTER TABLE filme
+ALTER COLUMN sinopse TYPE TEXT;
