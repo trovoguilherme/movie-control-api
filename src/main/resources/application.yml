@@ -16,6 +16,41 @@ spring:
     hibernate:
       ddl-auto: none
 
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include:
+          - 'health'
+          - 'prometheus'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+
+resilience4j.circuitbreaker:
+  instances:
+    theMovieDatabaseSearchMovieByQuery:
+      minimumNumberOfCalls: 4
+      slidingWindowSize: 8
+    theMovieDatabaseFindMovieById:
+      minimumNumberOfCalls: 4
+      slidingWindowSize: 8
+    theMovieDatabaseFindAllGenres:
+      minimumNumberOfCalls: 4
+      slidingWindowSize: 8
+    theMovieDatabaseFindAllLanguages:
+      minimumNumberOfCalls: 4
+      slidingWindowSize: 8
+    viaCepFindById:
+      minimumNumberOfCalls: 4
+      slidingWindowSize: 8
+
 tmdb:
   url: https://api.themoviedb.org/3
   language: pt-BR
