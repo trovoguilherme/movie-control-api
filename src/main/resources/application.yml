@@ -16,6 +16,23 @@ spring:
     hibernate:
       ddl-auto: none
 
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include:
+          - 'health'
+          - 'prometheus'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+
 tmdb:
   url: https://api.themoviedb.org/3
   language: pt-BR
