@@ -58,6 +58,31 @@ public class FilmeService {
         return filmeRepository.findByTitulo(titulo).orElseThrow(() -> new NotFoundException("Titulo não encontrado"));
     }
 
+    public Filme findById(Integer id) {
+        return filmeRepository.findById(id).orElseThrow(() -> new NotFoundException("Filme por Id não encontrardo"));
+    }
+
+    public Filme patchNotaOrComentario(Integer id, Double nota, String comentario) {
+        var filme = findById(id);
+
+        if (nota != null) {
+            filme.setNota(nota);
+        }
+
+        if (comentario != null) {
+            filme.setComentario(comentario);
+        }
+
+        return filmeRepository.save(filme);
+    }
+
+    @Transactional
+    public void deleteById(Integer id) {
+        var filme = findById(id);
+        filmeGeneroRepository.deleteByFilme(filme);
+        filmeRepository.delete(filme);
+    }
+
     private User findActualUser() {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
