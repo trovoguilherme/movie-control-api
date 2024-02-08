@@ -1,2 +1,0 @@
-
-ALTER TABLE usuario ADD COLUMN data_criacao TIMESTAMP;
