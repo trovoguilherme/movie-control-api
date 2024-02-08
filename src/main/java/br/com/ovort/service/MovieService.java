@@ -1,6 +1,6 @@
 package br.com.ovort.service;
 
-import br.com.ovort.exception.SearchMovieNotFoundException;
+import br.com.ovort.exception.NotFoundException;
 import br.com.ovort.remote.client.tmdb.MovieServiceClient;
 import br.com.ovort.remote.client.tmdb.response.movie.GenreResponse;
 import br.com.ovort.remote.client.tmdb.response.movie.MovieResponse;
@@ -17,8 +17,8 @@ public class MovieService {
 
     private final MovieServiceClient movieServiceClient;
 
-    public SearchMoviePaginationResponse search(String title) throws SearchMovieNotFoundException {
-        return movieServiceClient.searchMovieByName(title).orElseThrow(() -> new SearchMovieNotFoundException("Não encontrei os filmes"));
+    public SearchMoviePaginationResponse search(String title) throws NotFoundException {
+        return movieServiceClient.searchMovieByName(title).orElseThrow(() -> new NotFoundException("Filme não encontrado"));
     }
 
     public MovieResponse findById(Integer movieId) {

@@ -2,8 +2,7 @@ package br.com.ovort.controller;
 
 import br.com.ovort.dto.request.filme.FilmeRequest;
 import br.com.ovort.dto.response.FilmeResponse;
-import br.com.ovort.entity.filme.Filme;
-import br.com.ovort.exception.SearchMovieNotFoundException;
+import br.com.ovort.exception.NotFoundException;
 import br.com.ovort.service.FilmeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +23,7 @@ public class FilmeController {
     private final FilmeService filmeService;
 
     @PostMapping
-    public ResponseEntity<FilmeResponse> create(@RequestBody @Valid FilmeRequest filmeRequest) throws SearchMovieNotFoundException {
+    public ResponseEntity<FilmeResponse> create(@RequestBody @Valid FilmeRequest filmeRequest) throws NotFoundException {
         return ResponseEntity.ok(FilmeResponse.from(filmeService.create(filmeRequest)));
     }
 

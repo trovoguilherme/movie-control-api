@@ -1,7 +1,6 @@
 package br.com.ovort.controller;
 
-import br.com.ovort.exception.ResponseException;
-import br.com.ovort.exception.SearchMovieNotFoundException;
+import br.com.ovort.exception.NotFoundException;
 import br.com.ovort.remote.client.tmdb.response.movie.GenreResponse;
 import br.com.ovort.remote.client.tmdb.response.movie.MovieResponse;
 import br.com.ovort.remote.client.tmdb.response.movie.SpokenLanguageResponse;
@@ -25,7 +24,7 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping("/{titleName}/name")
-    public ResponseEntity<SearchMoviePaginationResponse> findByName(@PathVariable(name = "titleName") String titleName) throws SearchMovieNotFoundException {
+    public ResponseEntity<SearchMoviePaginationResponse> findByName(@PathVariable(name = "titleName") String titleName) throws NotFoundException {
         return ResponseEntity.ok(movieService.search(titleName));
     }
 
