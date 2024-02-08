@@ -4,6 +4,7 @@ import br.com.ovort.dto.request.filme.FilmeRequest;
 import br.com.ovort.entity.FilmeGenero;
 import br.com.ovort.entity.filme.Filme;
 import br.com.ovort.entity.user.User;
+import br.com.ovort.exception.AlreadyExistsException;
 import br.com.ovort.exception.NotFoundException;
 import br.com.ovort.repository.FilmeGeneroRepository;
 import br.com.ovort.repository.FilmeRepository;
@@ -26,12 +27,15 @@ public class FilmeService {
 
     public Filme create(FilmeRequest filmeRequest) throws NotFoundException {
         var moviesfound = movieService.search(filmeRequest.titulo());
-
         var movie = movieService.findById(MovieUtils.findMovieIdByMostSimilarTitle(filmeRequest.titulo(), moviesfound.results()));
+
+        if (filmeRepository.existsByTitulo(movie.title())) {
+            throw new AlreadyExistsException("Filme já cadastrado");
+        }
 
         var filmeSave = filmeRepository.saveAndFlush(new Filme(movie.title(), movie.original_title(), movie.overview(), LocalDateTime.parse(movie.release_date() + "T00:00:00"), movie.runtime(), movie.budget(), filmeRequest.nota(), filmeRequest.comentario(), findActualUser()));
 
-        movie.genres().forEach(g -> filmeGeneroRepository.save(new FilmeGenero(filmeSave, generoService.findByName(g.name()))));
+        movie.genres().forEach(g -> filmeSave.getFilmeGenero().add(filmeGeneroRepository.save(new FilmeGenero(filmeSave, generoService.findByName(g.name())))));
 
         return filmeSave;
     }

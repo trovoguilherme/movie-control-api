@@ -16,6 +16,12 @@ public class RestExceptionHandler {
         return new ResponseException(request, "Recurso não encontrado", exception.getMessage());
     }
 
+    @ExceptionHandler({AlreadyExistsException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseException alreadyExistsException(HttpServletRequest request, Exception exception) {
+        return new ResponseException(request, "Recurso já existe", exception.getMessage());
+    }
+
     @ExceptionHandler({FeignException.class})
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ResponseException feignUnauthorizedException(HttpServletRequest request, FeignException exception) {
