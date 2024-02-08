@@ -2,7 +2,6 @@ package br.com.ovort.entity.filme;
 
 import br.com.ovort.entity.FilmeGenero;
 import br.com.ovort.entity.user.User;
-import br.com.ovort.remote.client.tmdb.response.movie.MovieResponse;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -68,7 +67,7 @@ public class Filme {
     @JoinColumn(name = "ID_USUARIO", nullable = false)
     private User user;
 
-    public Filme(String titulo, String tituloOriginal, String sinopse, LocalDateTime dataLancamento, int tempo, Integer budget, Double nota, String comentario, User user) {
+    public Filme(String titulo, String tituloOriginal, String sinopse, LocalDateTime dataLancamento, int tempo, Integer budget, Double nota, String comentario, User user, List<FilmeGenero> filmeGenero) {
         this.titulo = titulo;
         this.tituloOriginal = tituloOriginal;
         this.sinopse = sinopse;
@@ -78,6 +77,11 @@ public class Filme {
         this.nota = nota;
         this.comentario = comentario;
         this.user = user;
+        this.filmeGenero = filmeGenero;
+    }
+
+    public Filme(String titulo) {
+        this.titulo = titulo;
     }
 
 }
