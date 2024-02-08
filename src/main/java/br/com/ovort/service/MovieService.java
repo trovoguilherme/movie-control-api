@@ -18,15 +18,15 @@ public class MovieService {
     private final MovieServiceClient movieServiceClient;
 
     public SearchMoviePaginationResponse search(String title) throws NotFoundException {
-        return movieServiceClient.searchMovieByName(title).orElseThrow(() -> new NotFoundException("Filme não encontrado"));
+        return movieServiceClient.searchMovieByName(title).orElseThrow(() -> new NotFoundException("Movie não encontrado"));
     }
 
     public MovieResponse findById(Integer movieId) {
-        return movieServiceClient.findMovieById(movieId).get();
+        return movieServiceClient.findMovieById(movieId).orElseThrow(() -> new NotFoundException("Movie por Id não encontrado"));
     }
 
     public GenreResponse findMovieGenres(String language) {
-        return movieServiceClient.findMovieGenres().get();
+        return movieServiceClient.findMovieGenres().orElseThrow(() -> new NotFoundException("Movie Genres não encontrado"));
     }
 
     public List<SpokenLanguageResponse> findAllLanguages() {
