@@ -1,5 +1,6 @@
 package br.com.ovort.controller;
 
+import br.com.ovort.dto.request.movie.GenreRequest;
 import br.com.ovort.exception.NotFoundException;
 import br.com.ovort.remote.client.tmdb.response.movie.GenreResponse;
 import br.com.ovort.remote.client.tmdb.response.movie.MovieResponse;
@@ -34,8 +35,8 @@ public class MovieController {
     }
 
     @GetMapping("/genres")
-    public ResponseEntity<GenreResponse> findMovieGenre(@RequestParam(name = "language", required = false) String language) {
-        return ResponseEntity.ok(movieService.findMovieGenres(language));
+    public ResponseEntity<GenreResponse> findMovieGenre(@RequestParam(name = "language", required = false) GenreRequest language) {
+        return ResponseEntity.ok(movieService.findMovieGenres(language.name()));
     }
 
     @GetMapping("/languages")

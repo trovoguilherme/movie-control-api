@@ -7,6 +7,7 @@ import br.com.ovort.remote.client.tmdb.response.movie.MovieResponse;
 import br.com.ovort.remote.client.tmdb.response.movie.SpokenLanguageResponse;
 import br.com.ovort.remote.client.tmdb.response.search.movie.SearchMoviePaginationResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class MovieService {
         return movieServiceClient.findMovieById(movieId).orElseThrow(() -> new NotFoundException("Movie por Id não encontrado"));
     }
 
+    @Cacheable(value = "movieGenres", key = "#language", unless = "#result == null")
     public GenreResponse findMovieGenres(String language) {
         return movieServiceClient.findMovieGenres().orElseThrow(() -> new NotFoundException("Movie Genres não encontrado"));
     }
